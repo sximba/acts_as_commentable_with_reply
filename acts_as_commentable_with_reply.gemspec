@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Lungelo Ximba"]
   spec.email         = ["lungeloximba@gmail.com"]
 
-  spec.summary       = %q{Plugin/gem that provides comment functionality}
-  spec.description   = %q{Plugin/gem that provides comment functionality with one-level nesting of comment replies (based on acts_as_commentable)}
+  spec.summary       = %q{Rails gem that provides comment functionality with one-level nesting of comment replies}
+  spec.description   = %q{Rails gem that provides comment functionality with one-level nesting of comment replies (based on acts_as_commentable)}
   spec.homepage      = %q{https://github.com/sximba/acts_as_commentable_with_reply}
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }

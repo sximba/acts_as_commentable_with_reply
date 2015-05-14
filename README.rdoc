@@ -2,7 +2,13 @@
 
 Provides a single Comment model that can be attached to any model(s) within your app. It creates
 Comment and CommentReply models and handles the plumbing between those models and any models that you declare to be
-commentable models.
+commentable models. The replies are limited to one-level nesting. If you need no nesting then check out
+[acts_as_commentable](https://github.com/jackdempsey/acts_as_commentable). If you need deeper nesting then checkout
+[acts_as_commentable_with_threading](https://github.com/elight/acts_as_commentable_with_threading).
+
+The advantage of this gem over acts_as_commentable_with_threading is that it does not use the nested set model and
+this leads to faster writes. Check [this Wikipedia](http://en.wikipedia.org/wiki/Nested_set_model) article for
+further reading on the nested set model.
 
 
 == Installation :
@@ -79,7 +85,6 @@ This also works in conjunction with comment types:
     class Todo < ActiveRecord::Base
       acts_as_commentable :public, :private, { class_name: 'MyComment' }
     end
-
 
 == Credits
 
