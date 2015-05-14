@@ -1,0 +1,8 @@
+Description:
+    Copies comment.rb to app/models/.
+    Copies comment_reply.rb to app/models/.
+    Copies create_comment.rb to db/migrate
+    Copies create_comment_replies.rb to db/migrate
+
+Examples:
+    `rails generate comment`

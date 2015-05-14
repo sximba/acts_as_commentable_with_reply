@@ -1,0 +1,90 @@
+= Acts As Commentable with Reply
+
+Provides a single Comment model that can be attached to any model(s) within your app. It creates
+Comment and CommentReply models and handles the plumbing between those models and any models that you declare to be
+commentable models.
+
+
+== Installation :
+
+Add the following line to your Gemfile
+
+=== Rails 4
+
+  gem 'acts_as_commentable'
+
+== Generator
+
+
+=== Rails 4
+
+  rails g comment
+
+Then migrate your database to add the comments and comment_replies models:
+
+  rake db:migrate
+
+== Usage
+
+Make the desired ActiveRecord model act as commentable:
+ 
+  class Post < ActiveRecord::Base
+    acts_as_commentable
+  end
+
+Add a comment to a model instance by adding the following to the controller:
+ 
+  commentable = Post.create
+  comment = commentable.comments.create
+  comment.title = "First comment."
+  comment.comment = "This is the first comment."
+  comment.save
+
+Add a reply to a comment instance by adding the following to the controller:
+
+  comment = Comment.find x # Any other way of obtaining a comment instance
+  reply = comment.comment_replies.create :reply => "This is the first reply."
+
+Fetch comments for the commentable model by adding the following to the view:
+ 
+  commentable = Post.find(1)
+  comments = commentable.comments.recent.limit(10).all
+
+Fetch replies for a comment instance by adding the following to the controller/view:
+
+  comment = Comment.find x # Any other way of obtaining a comment instance
+  replies = CommentReply.find_comment_replies comment
+
+You can also add different types of comments to a model:
+ 
+  class Todo < ActiveRecord::Base
+    acts_as_commentable :public, :private
+  end
+
+To fetch the different types of comments for this model:
+
+  public_comments = Todo.find(1).public_comments
+  private_comments = Todo.find(1).private_comments
+
+
+By default, `acts_as_commentable` will assume you are using a `Comment` model.
+To change this, or change any other join options, pass in an options hash:
+
+    class Todo < ActiveRecord::Base
+      acts_as_commentable class_name: 'MyComment'
+    end
+
+This also works in conjunction with comment types:
+
+    class Todo < ActiveRecord::Base
+      acts_as_commentable :public, :private, { class_name: 'MyComment' }
+    end
+
+
+== Credits
+
+Jack Dempsey - This plugin is heavily influenced by Acts As Commentable.
+
+== Contributors
+
+Lungelo Ximba
