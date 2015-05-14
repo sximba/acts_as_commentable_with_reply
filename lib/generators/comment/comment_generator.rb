@@ -15,6 +15,5 @@ class CommentGenerator < Rails::Generators::Base
     template "comment.rb", "app/models/comment.rb"
     template "comment_reply.rb", "app/models/comment_reply.rb"
     migration_template "create_comments.rb", "db/migrate/create_comments.rb"
-    migration_template "create_comment_replies.rb", "db/migrate/create_comment_replies.rb"
   end
 end

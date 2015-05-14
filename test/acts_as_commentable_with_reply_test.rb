@@ -15,8 +15,6 @@ class ActsAsCommentableTest < Test::Unit::TestCase
   end
 
   def setup_replies
-    require File.expand_path(File.dirname(__FILE__) + '/../lib/generators/comment/templates/create_comment_replies')
-    CreateCommentReplies.up
     load(File.expand_path(File.dirname(__FILE__) + '/../lib/generators/comment/templates/comment_reply.rb'))
   end
 
