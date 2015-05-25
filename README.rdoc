@@ -17,7 +17,7 @@ Add the following line to your Gemfile
 
 === Rails 4
 
-  gem 'acts_as_commentable'
+  gem 'acts_as_commentable_with_reply'
 
 == Generator
 

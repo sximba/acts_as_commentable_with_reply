@@ -7,7 +7,7 @@ class CommentReply < ActiveRecord::Base
   default_scope -> { order('created_at ASC')}
 
   # NOTE: install the acts_as_votable plugin if you
-  # want user to vote on the quality of comments.
+  # want user to vote on the quality of replies.
   #acts_as_votable
 
   # NOTE: Comments belong to a user
